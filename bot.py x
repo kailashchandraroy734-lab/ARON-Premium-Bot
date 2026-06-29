@@ -63,3 +63,21 @@ class PremiumBot(commands.Bot):
             except Exception as e:
 
                 log.error(f"Failed to load {cog}: {e}")
+
+async def on_ready(self):
+        log.info("=" * 50)
+        log.info(f"{BOT_NAME} is online!")
+        log.info(f"Logged in as: {self.user} ({self.user.id})")
+        log.info("=" * 50)
+
+        activity = discord.Activity(
+            type=discord.ActivityType.watching,
+            name=BOT_STATUS,
+        )
+
+        await self.change_presence(
+            status=discord.Status.online,
+            activity=activity,
+        )
+
+        log.info("Bot is ready.")
