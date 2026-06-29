@@ -81,3 +81,15 @@ async def on_ready(self):
         )
 
         log.info("Bot is ready.")
+
+bot = PremiumBot()
+
+
+async def main():
+
+    async with bot:
+        await bot.start(DISCORD_TOKEN)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
