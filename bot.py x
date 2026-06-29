@@ -82,8 +82,14 @@ async def on_ready(self):
 
         log.info("Bot is ready.")
 
-bot = PremiumBot()
+try:
+            synced = await self.tree.sync()
+            log.info(f"Synced {len(synced)} slash command(s).")
+        except Exception as e:
+            log.error(f"Command sync failed: {e}")
 
+        log.info("Bot is ready.")
+bot = PremiumBot()
 
 async def main():
 
